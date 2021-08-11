@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>SD60 - 华益瑞在线文档</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="../css/theme.css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "SD60";
+    var mkdocs_page_input_path = "SD60 manual.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> 华益瑞在线文档</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="..">首页</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../MD504%20manual/">MD504</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">SD60</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_2">固件</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">关键参数</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_4">供电</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_5">灯的状态</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_6">测量</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#nb-iot">NB-IOT</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#usb">关于USB通讯</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_7">支持传感器</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_8">辅助串口命令</a>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../TRB3%20manual/">TRB3</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">华益瑞在线文档</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>SD60</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="header">
+    <center>
+</h1>
+
+<h1 id="_1"><strong><em>请务必将音频接头完全插入音频底座，否则容易导致接口短路</em></strong></h1>
+<h2 id="_2">固件</h2>
+<ul>
+<li><a href="https://pan.baidu.com/s/1F8n_oyvg6aH5m3zyCLZlhw">SD60 2.2.3</a>，提取码：0000 </li>
+</ul>
+<h2 id="_3">关键参数</h2>
+<ul>
+<li>待机功耗：典型值120微安@12伏</li>
+<li>测量时功耗：小于20毫安@12伏</li>
+<li>上传数据时功耗：小于150毫安@12伏</li>
+<li>存储容量：16M字节<ul>
+<li>例：6个3参数传感器，每10分钟测量一次，约可存储1.5年(循环存储)</li>
+</ul>
+</li>
+</ul>
+<h2 id="_4">供电</h2>
+<ul>
+<li>SOLAR<ul>
+<li>可接入 <strong>10-18V</strong> 直流电，通常用来接太阳能板，可以给设备供电并对电池进行充电</li>
+</ul>
+</li>
+<li>18650锂电池<ul>
+<li>一定要注意电路板上6节电池的正负极标志，负极全部位于靠近传感器端子一侧。</li>
+<li>共6节18650锂电池，<strong>3串2并</strong>，满电状态下输出电压约为 <strong>12伏</strong><ul>
+<li>当电压低于 <strong>9伏</strong> 时，SD60将停止上传数据</li>
+<li>当电压低于 <strong>8伏</strong> 时，SD60将停止测量</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>BATT<ul>
+<li>本接口与板载电池并联，如果板载电池容量无法满足应用需求，可通过本接口接入电池包</li>
+</ul>
+</li>
+<li>USB<ul>
+<li>通过USB提供的5伏电压，可以临时用于SD60工作。但是需要注意的是，传感器的接入将受到一定限制，如 <strong>SM926、CS655</strong> 等需要较高电源电压的传感器。所以当USB成为SD60唯一的电源接入时，请务必确认是否能满足您的传感器供电要求。在后面的传感器支持列表中，将会列出各个传感器的建议供电电压</li>
+</ul>
+</li>
+<li>纽扣电池<ul>
+<li>CR1220纽扣电池位于电路板背面，当没有外部电源接入时，用于保持设备时间</li>
+</ul>
+</li>
+</ul>
+<h2 id="_5">灯的状态</h2>
+<ul>
+<li>主板<ul>
+<li>RUN指示灯(位于USB接口处)<ul>
+<li>数采启动时，闪烁2次</li>
+<li>每10秒点亮一次(点亮时长10毫秒)。执行测量时，长亮，<strong>尽量避免在RUN指示灯点亮时插入传感器，否则可能会导致接口损坏</strong></li>
+<li>当USB连接至PC且对应串口处于打开状态时，RUN指示灯长亮</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>NBIOT电路板<ul>
+<li>ONLINE指示灯<ul>
+<li>熄灭：离线</li>
+<li>闪烁：上线中</li>
+<li>长亮：上线</li>
+</ul>
+</li>
+<li>DATA指示灯<ul>
+<li>闪烁：发送数据</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="_6">测量</h2>
+<ul>
+<li>板载温湿度测量<ul>
+<li>0%RH~80%RH(25℃时)误差仅为±1.5%RH</li>
+<li>40℃-90℃(典型值)误差仅为±0.2℃</li>
+</ul>
+</li>
+<li>12个独立SDI-12通道，一定要注意，这里12个接口都是 <strong>独立</strong> 的，<strong>不是SDI-12总线</strong>，在使用时不需要设置传感器的SDI-12地址，只需要在上位机软件中配置好对应的传感器选项。不接传感器的端口，选择NO_Devcie<ol>
+<li>通道1：3.5mm音频母头</li>
+<li>通道2：3.5mm音频母头</li>
+<li>通道3：3.5mm音频母头</li>
+<li>通道4：3.5mm音频母头</li>
+<li>通道5：3.5mm音频母头</li>
+<li>通道6：3.5mm音频母头</li>
+<li>通道7：5.08mm 3pin端子</li>
+<li>通道8：5.08mm 3pin端子</li>
+<li>通道9：5.08mm 3pin端子</li>
+<li>通道10：5.08mm 3pin端子</li>
+<li>通道11：5.08mm 3pin端子</li>
+<li>通道12：5.08mm 3pin端子</li>
+</ol>
+</li>
+</ul>
+<h2 id="nb-iot">NB-IOT</h2>
+<ul>
+<li>如果配置了NB-IOT模块，SD60将拥有下列功能<ul>
+<li>可选http或mqtt协议，定时主动将数据上传至数据平台，不再需要去现场取数据</li>
+<li>通过网络自动校准时间</li>
+<li><strong>注意，通过上位机软件配置http模式下的IP地址时，必须以"http://"开头，如"http://101.200.166.95"或者"http://www.truwel.org"</strong></li>
+</ul>
+</li>
+</ul>
+<h2 id="usb">关于USB通讯</h2>
+<ul>
+<li>采用USB-Type-c接口，连接后，电脑端将生成一个串口，可通过电脑设备管理器查看该串口(Silicon Labs CP210x USB to UART Bridge
+)，如果没有安装过本系列的USB驱动，使用前需要先安装<a href="https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers">CP210x驱动</a><ul>
+<li>波特率固定为 <strong>921600</strong></li>
+<li>通过主板上的蓝色开关可调整USB通讯的工作模式<ul>
+<li>run模式<ul>
+<li><strong>当SD60的USB口已连接且工作在run模式</strong> 时，采集器停止测量，可利用电脑端上位机软件操作SD60。大部分情况下，只需要用到run模式</li>
+</ul>
+</li>
+<li>debug模式<ul>
+<li>当遇到问题时，在debug模式下，可利用串口调试助手等软件，查看输出的调试信息，查找问题原因</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="_7">支持传感器</h2>
+<ol>
+<li>SM926(<strong>12V供电</strong>)<ol>
+<li>土壤含水量</li>
+<li>土壤电导率(温度补偿，Siemens / Meter)</li>
+<li>土壤温度(摄氏)</li>
+<li>土壤温度(华氏)</li>
+<li>土壤电导率(Siemens / Meter)</li>
+<li>土壤介电常数实部</li>
+<li>土壤介电常数实部(温度补偿)</li>
+<li>土壤介电常数虚部</li>
+<li>土壤介电常数虚部(温度补偿)</li>
+</ol>
+</li>
+<li>SM826(<strong>12V供电，开发中</strong>)
+    <a href="1. Volumetric Water Content, θ(m3/m3)"></a><a href="2. Electrical Conductivity, σ(dS/m)"></a><a href="3. Temperature(°C)"></a><a href="4. Permittivity, ε"></a><a href="5. Period, τ(µSec)"></a><a href="6. Voltage Ratio, α"></a></li>
+<li>TRB3<ol>
+<li>大气温度</li>
+<li>大气湿度</li>
+<li>大气压力</li>
+</ol>
+</li>
+<li>CS65X(<strong>12V供电</strong>)<ol>
+<li>土壤含水量Volumetric Water Content, θ(m3/m3)</li>
+<li>土壤电导率Electrical Conductivity, σ(dS/m)</li>
+<li>土壤温度(摄氏)Temperature(°C)</li>
+<li>土壤介电常数Permittivity, ε</li>
+<li>周期Period, τ(µSec)</li>
+<li>电压比Voltage Ratio, α</li>
+</ol>
+</li>
+<li>SoilVUE10_50(待测试)<ul>
+<li>土壤含水量，介电常数，温度，电导率(5, 10, 20, 30, 40, and 50 cm) </li>
+</ul>
+</li>
+<li>SoilVUE10_100(待测试)<ul>
+<li>土壤含水量，介电常数，温度，电导率(5,10, 20, 30, 40, 50, 60, 75, and 100 cm) </li>
+</ul>
+</li>
+<li>HydraProbe(<strong>12V供电</strong>)<ol>
+<li>土壤含水量</li>
+<li>土壤电导率(温度补偿，Siemens / Meter)</li>
+<li>土壤温度(摄氏)</li>
+<li>土壤温度(华氏)</li>
+<li>土壤电导率(Siemens / Meter)</li>
+<li>土壤介电常数实部</li>
+<li>土壤介电常数实部(温度补偿)</li>
+<li>土壤介电常数虚部</li>
+<li>土壤介电常数虚部(温度补偿)</li>
+</ol>
+</li>
+<li>HydraProbeLite(<strong>12V供电</strong>)<ol>
+<li>土壤含水量(无机、矿物土)Soil moisture for inorganic &amp; mineral soil</li>
+<li>土壤电导率Bulk electrical conductivity</li>
+<li>土壤温度Temperature</li>
+</ol>
+</li>
+<li>Decagon_5TM<ol>
+<li>土壤介电常数,dielectric permittivity</li>
+<li>土壤温度</li>
+<li>土壤水分,volumetric water content</li>
+</ol>
+</li>
+<li>Decagon_5TE<ol>
+<li>土壤介电常数,dielectric permittivity</li>
+<li>土壤电导率,electrical conductivity</li>
+<li>土壤温度</li>
+<li>土壤水分,volumetric water content</li>
+</ol>
+</li>
+<li>MT10<ol>
+<li>土壤介电常数,dielectric permittivity</li>
+<li>土壤温度</li>
+<li>土壤水分,volumetric water content</li>
+</ol>
+</li>
+<li>MT10_EC<ol>
+<li>土壤介电常数,dielectric permittivity</li>
+<li>土壤电导率,electrical conductivity</li>
+<li>土壤温度</li>
+<li>土壤水分,volumetric water content</li>
+</ol>
+</li>
+<li>SI_4X1<ol>
+<li>目标温度</li>
+<li>传感器温度</li>
+</ol>
+</li>
+<li>CS45X<ol>
+<li>水位</li>
+<li>水温</li>
+</ol>
+</li>
+<li>TEROS11 <ol>
+<li>calibrated counts VWC  (RAW)</li>
+<li>temperature (温度)</li>
+<li>mineral soils vwc (含水量(矿质土))</li>
+<li>apparent dielectric permittivity (表观介电常数)</li>
+</ol>
+</li>
+<li>TEROS12 <ol>
+<li>calibrated counts VWC (RAW)</li>
+<li>temperature (温度)</li>
+<li>electrical conductivity (电导率)</li>
+<li>mineral soils vwc (含水量(矿质土))</li>
+<li>apparent dielectric permittivity (表观介电常数)</li>
+</ol>
+</li>
+</ol>
+<h2 id="_8">辅助串口命令</h2>
+<ul>
+<li>下载指定数据<ul>
+<li>"-get record n(,m)\r\n"<ul>
+<li>例：获取第10条记录<ul>
+<li>"-get record 10\r\n"</li>
+</ul>
+</li>
+<li>例：获取第100至199条记录<ul>
+<li>"-get record 100,100\r\n"</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>获取采集器信息<ul>
+<li>"-get status\r\n"</li>
+</ul>
+</li>
+<li>电源开关<ul>
+<li>"-sw power on\r\n"</li>
+<li>"-sw power off\r\n"</li>
+</ul>
+</li>
+</ul>
+<p><a href="#header">回到顶部</a></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../TRB3%20manual/" class="btn btn-neutral float-right" title="TRB3">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../MD504%20manual/" class="btn btn-neutral" title="MD504"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../MD504%20manual/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../TRB3%20manual/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
