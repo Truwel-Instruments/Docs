@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>DL212 - 北京华益瑞科技有限公司</title>
+  <title>编程手册 - 北京华益瑞科技有限公司</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "DL212";
-    var mkdocs_page_input_path = "DL212.md";
+    var mkdocs_page_name = "\u7f16\u7a0b\u624b\u518c";
+    var mkdocs_page_input_path = "\u7f16\u7a0b\u624b\u518c.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -78,7 +78,7 @@
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">测量通道扩展</span></p>
-                <ul class="current">
+                <ul>
                     <li class="toctree-l1"><a class="reference internal" href="../MU25T/">MU25T</a>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../RM1020/">RM10/20</a>
@@ -89,17 +89,9 @@
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../TRAC4/">TRAC4</a>
                     </li>
-                    <li class="toctree-l1 current"><a class="reference internal current" href="#">Lora(Pakbus协议)</a>
-    <ul class="current">
-                <li class="toctree-l2 current"><a class="reference internal current" href="./">DL212</a>
-    <ul class="current">
-    <li class="toctree-l3"><a class="reference internal" href="#_2">概述</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#_3">技术参数</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#_4">主要应用领域：</a>
-    </li>
-    </ul>
+                    <li class="toctree-l1"><a class="reference internal" href="#">Lora(Pakbus协议)</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../DL212/">DL212</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../DL228/">DL228</a>
                 </li>
@@ -144,16 +136,8 @@
     <li><a href="..">Docs</a> &raquo;</li>
     
       
-        
-          <li>测量通道扩展 &raquo;</li>
-        
-      
-        
-          <li>Lora(Pakbus协议) &raquo;</li>
-        
-      
     
-    <li>DL212</li>
+    <li>编程手册</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -170,78 +154,62 @@
 </h1>
 
 <h1 id="_1"></h1>
-<h3 id="_2">概述</h3>
+<h3 id="_2">示例</h3>
 <ul>
-<li>DL212智能采集无线节点是一个具有采集模拟量传感器、数字传感器功能的无线智能节点，它可以在各种恶劣的自然环境下使用。具有低功耗、高稳定性、长期可靠运行等特点，广泛应用在各种野外监测梯度系统和区域型监测站上。DL212的内部是以32位ARM CPU为核心，配以24位AD进行模拟量测量，还可以连接各种智能传感器，频率信号传感器，数据通过Lora信号发送到DL3000的智能采集无线网关上进行处理</li>
+<li>系统上电后自动执行"main.py"文件，所以我们必须建立一个"main.py"文件。为了方便代码管理，建议采用如下结构<ul>
+<li>
+<p>main.py
+    ```py
+    from  project_name_time import main # 从项目文件中导入main函数</p>
+<p>if <strong>name</strong> == '<strong>main</strong>':
+    main()
+<code>- project_name_time.py</code>py
+import sys
+import userfunc
+import utime
+from machine import RTC</p>
+<p>def main():
+    print("Welcome!") 
+    while True:
+        print(rtc.now()) 
+        bat = userfunc.battery()
+        userfunc.excite_v(1,1000) 
+        utime.sleep_ms(100) 
+        volt_diff_1 = userfunc.volt_diff(1, 2, 1, 0)
+        print('battery = %f' % bat)
+        temp = cmath.sqrt(bat)
+        print(temp)
+        print('volt_diff_1 = %f' % volt_diff_1)
+        utime.sleep(3)
+```</p>
+</li>
 </ul>
-<h3 id="_3">技术参数</h3>
+</li>
+</ul>
+<h3 id="_3">常用命令</h3>
 <ul>
-<li>供电供电范围：9 ~ 25Vdc(典型12Vdc)         </li>
-<li>功耗待机功耗：10mA、USB通讯时功耗18mA</li>
-<li>工作温度：-40℃ ~ +70℃</li>
-<li>防护等级：IP63 </li>
-<li>模拟输入通道(6个单端或3个差分)<ul>
-<li>测量电压范围 －200mV～+3000mV</li>
-<li>24位AD转换，分辨率0.23uV</li>
-<li>精度±0.04%读数+6uV偏移量</li>
+<li>可直接将命令复制到串口repl交互环境下</li>
+<li>查看数据采集器内文件
+    <code>py
+    import os
+    os.listdir()</code></li>
 </ul>
-</li>
-<li>电压输出通道(VX)<ul>
-<li>输出选择100mV～3000mV</li>
-<li>12bit：分辨率±4.5mV,最大电流50mA</li>
-</ul>
-</li>
-<li>数字端口(D1，D2)<ul>
-<li>输入：低：&lt;0.9Vdc  高： &gt;2.7Vdc</li>
-<li>输出：0V、5V</li>
-<li>D1,D2口均可连接SDI12传感器</li>
-<li>方波频率测量最大输入1kHz</li>
-</ul>
-</li>
-<li>频率通道<ul>
-<li>方波频率(PS)<ul>
-<li>开关频率150Hz</li>
-<li>高频计数60KHz     </li>
-</ul>
-</li>
-<li>正弦波频率(PL)<ul>
-<li>低频交流20KHz</li>
-<li>高频计数20KHz</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>通讯 <ul>
-<li>USB Micro B</li>
-<li>Lora</li>
-</ul>
-</li>
-<li>SW12<ul>
-<li>可控制输出12V电源，负载300mA电流</li>
-</ul>
-</li>
-</ul>
-<h3 id="_4">主要应用领域：</h3>
+<h3 id="python">常用<a href="https://docs.python.org/zh-cn/3/library/">python标准库</a></h3>
+<h3 id="_4">库介绍</h3>
 <ul>
-<li>生态气象：森林梯度站，农田小气候站，草原生态站，荒漠站，海洋生态站</li>
-<li>土壤墒情：智能灌溉，农气研究</li>
-<li>水    文：水质，水位，流速监测等</li>
-<li>新 能 源：风能监测，太阳能监测</li>
+<li>os</li>
+<li>cmath – 复数运算函数功能</li>
+<li>math – 数学函数功能</li>
+<li>uarray – 数组存储功能</li>
+<li>ubinascii – 二进制与 ASCII 码转换功能</li>
+<li>utime – 时间相关功能</li>
+<li>ujson – JSON 编解码</li>
 </ul>
-<p><a href="#header">回到顶部</a></p>
+<h3 id="dl801">DL801特定库</h3>
               
             </div>
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../DL228/" class="btn btn-neutral float-right" title="DL228">Next <span class="icon icon-circle-arrow-right"></span></a>
-      
-      
-        <a href="../TRAC4/" class="btn btn-neutral" title="TRAC4"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>
@@ -265,10 +233,6 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../TRAC4/" style="color: #fcfcfc">&laquo; Previous</a></span>
-    
-    
-      <span><a href="../DL228/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
