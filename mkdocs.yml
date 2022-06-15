@@ -1,7 +1,0 @@
-site_name: 北京华益瑞科技有限公司
-nav: 
-    - 首页: index.md
-    - MD504: MD504 manual.md
-    - SD60: SD60 manual.md
-    - TRB3: TRB3 manual.md
-theme: readthedocs
