@@ -85,6 +85,48 @@
                 <ul class="current">
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">SDF(开关信号/低频交流信号转SDI12)</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#sdi1200">SDI12地址初始为'0'，命令可以地址'0'或者'?'开头，命令可以全部大写或全部小写</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#psw">模式一（PSW模式，默认模式）</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#psw_1">适用于只接入PSW传感器场景</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#sdi12">模式一下，SDI12命令及相应</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#pll">模式二（PLL模式）</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#pll_1">适用于只接入PLL传感器场景</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#sdi12_1">模式二下，SDI12命令及相应</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#pswpll">模式三（PSW、PLL自由选择模式）</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#pswpll_1">适用于同时接入PSW和PLL传感器的场景</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#sdi12_2">模式三下，SDI12命令及相应</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_1">任意模式下</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">系数设定</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#psw_2">设定PSW倍乘示例</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#psw_3">设定PSW偏移量示例</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#pll_2">设定PLL倍乘示例</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#pll_3">设定PLL倍乘示例</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">查询配置</a>
+    </li>
     </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../SDR/">SDR(串口转SDI12)</a>
@@ -158,10 +200,7 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="header">
-    <center>
-</h1>
-
+                <h1 id="sdf_stm32g031f8_cubemx_keil">SDF_STM32G031F8_CubeMX_KEIL</h1>
 <h6 id="sdi1200">SDI12地址初始为'0'，命令可以地址'0'或者'?'开头，命令可以全部大写或全部小写</h6>
 <h4 id="psw">模式一（PSW模式，默认模式）</h4>
 <h6 id="psw_1">适用于只接入PSW传感器场景</h6>
@@ -190,7 +229,7 @@ sdi12 sensor response  -&gt; &quot;0+PLL\r\n&quot;
 <h4 id="pswpll">模式三（PSW、PLL自由选择模式）</h4>
 <h6 id="pswpll_1">适用于同时接入PSW和PLL传感器的场景</h6>
 <pre><code>sdi12 recorder command -&gt; &quot;0CONFIG DUAL MODE!&quot;
-sdi12 sensor response  -&gt; &quot;0FREE MODE\r\n&quot;
+sdi12 sensor response  -&gt; &quot;0DUAL MODE\r\n&quot;
 </code></pre>
 <h6 id="sdi12_2">模式三下，SDI12命令及相应</h6>
 <pre><code>sdi12 recorder command -&gt; &quot;0M!&quot;
@@ -224,16 +263,16 @@ sdi12 sensor response  -&gt; &quot;0+PSW+PLL\r\n&quot;
 sdi12 sensor response  -&gt; &quot;0PSW GAIN 1.0\r\n&quot;
 </code></pre>
 <h6 id="psw_3">设定PSW偏移量示例</h6>
-<pre><code>sdi12 recorder command -&gt; &quot;0CONFIG PSW OFFSEET 0.2!&quot;
-sdi12 sensor response  -&gt; &quot;0PSW OFFSEET 0.2\r\n&quot;
+<pre><code>sdi12 recorder command -&gt; &quot;0CONFIG PSW OFFSET 0.2!&quot;
+sdi12 sensor response  -&gt; &quot;0PSW OFFSET 0.2\r\n&quot;
 </code></pre>
 <h6 id="pll_2">设定PLL倍乘示例</h6>
 <pre><code>sdi12 recorder command -&gt; &quot;0CONFIG PLL GAIN 1.0!&quot;
 sdi12 sensor response  -&gt; &quot;0PLL GAIN 1.0\r\n&quot;
 </code></pre>
 <h6 id="pll_3">设定PLL倍乘示例</h6>
-<pre><code>sdi12 recorder command -&gt; &quot;0CONFIG PLL OFFSEET 0.2!&quot;
-sdi12 sensor response  -&gt; &quot;0PLL OFFSEET 0.2\r\n&quot;
+<pre><code>sdi12 recorder command -&gt; &quot;0CONFIG PLL OFFSET 0.2!&quot;
+sdi12 sensor response  -&gt; &quot;0PLL OFFSET 0.2\r\n&quot;
 </code></pre>
 <h4 id="_3">查询配置</h4>
 <pre><code>sdi12 recorder command -&gt; &quot;0HELP!&quot;
@@ -245,7 +284,6 @@ PLL GAIN =1.0
 PLL OFFSET =0.0
 &quot;
 </code></pre>
-<p><a href="#header">回到顶部</a></p>
               
             </div>
           </div>

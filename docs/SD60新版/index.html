@@ -251,9 +251,7 @@
 <h3 id="_6">支持传感器列表</h3>
 <ol>
 <li>SM926(土壤9参数)</li>
-</ol>
-<!-- 2. SM826 -->
-<ol>
+<li>无</li>
 <li>TRB3(空气温湿压)</li>
 <li>IRS101(红外温度)</li>
 <li>RS_NR(辐射)</li>
@@ -262,10 +260,8 @@
 <li>TR_ASC(自动集沙仪)</li>
 <li>DV105(5模拟量差分通道)</li>
 <li>CS65X(土壤6参数)</li>
-</ol>
-<!-- 11. SOILVUE10_50 -->
-<!-- 12. SOILVUE10_100 -->
-<ol>
+<li>无</li>
+<li>无</li>
 <li>HYDRAPROBE</li>
 <li>HYDRAPROBE_LITE</li>
 <li>DECAGON_5TM</li>
@@ -273,9 +269,7 @@
 <li>MT10</li>
 <li>MT10_EC</li>
 <li>SI_4X1</li>
-</ol>
-<!-- 20. GMX -->
-<ol>
+<li>无</li>
 <li>CS45X(水位)</li>
 <li>TEROS11</li>
 <li>TEROS12</li>
@@ -289,8 +283,9 @@
 <li>TENSIOMARK</li>
 <li>ACCLIMA_TDR3XX</li>
 <li>ACCLIMA_TDT</li>
-<li>SR50A(超声测距)</li>
-<li>SR50AT(超声测距)</li>
+<li>SR50A</li>
+<li>SR50AT</li>
+<li>pF_Meter</li>
 </ol>
 <h3 id="_7">命令列表</h3>
 <h6 id="921600">串口波特率921600，所有命令必须以回车换行结尾</h6>
@@ -298,7 +293,7 @@
 <li>常规命令 <strong>示例</strong></li>
 </ul>
 <pre><code>/*重启设备*/
--reboot 
+&quot;-reboot&quot;
 </code></pre>
 <pre><code>/*下载数据：起始记录号，记录条数*/
 &quot;-get record 0,10000&quot;
