@@ -54,29 +54,19 @@
                 <ul class="current">
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">TR128(温度链专用数据采集器)</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#_1">使用说明</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#_2">存储</a>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">存储</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#_3">供电</a>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">供电</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#_4">测量</a>
+    <li class="toctree-l2"><a class="reference internal" href="#_4">测量</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#usb">USB通讯</a>
+    <li class="toctree-l2"><a class="reference internal" href="#usb">USB通讯</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#4g">4G通讯(选配)</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#_5">常用辅助命令</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#921600ascii">串口波特率921600，响应结尾ASCII字符串，严格区分大小写</a>
-    </li>
-        </ul>
+    <li class="toctree-l2"><a class="reference internal" href="#4g">4G通讯(选配)</a>
     </li>
     </ul>
                     </li>
-                    <li class="toctree-l1"><a class="reference internal" href="../SD60/">SD60(新版)</a>
+                    <li class="toctree-l1"><a class="reference internal" href="../SD60/">SD60</a>
                     </li>
                 </ul>
                 <p class="caption"><span class="caption-text">通讯设备</span></p>
@@ -184,12 +174,11 @@
     <center>
 </h1>
 
-<h2 id="tr128">TR128新版本</h2>
 <h3 id="_1">使用说明</h3>
 <h6 id="_2">存储</h6>
 <ul>
 <li>16M字节<ul>
-<li>每个浮点数占4字节，每一条数据包括时间、记录号、电源电压、温度、湿度、电阻1……电阻N，假设接入100个电阻，那么每条数据字节数等于420字节(5<em>4+100</em>4)。假设每半小时测量并存储一次，则可存储超过832天。存满之后，设备自动循环存储，新的数据会覆盖旧的数据</li>
+<li>每个浮点数占4字节，每一条数据包括时间、记录号、电源电压、温度、湿度、电阻1……电阻N，假设接入100个电阻，那么每条数据字节数等于420字节(5×4+100×4)。假设每半小时测量并存储一次，则可存储超过832天。存满之后，设备自动循环存储，新的数据会覆盖旧的数据</li>
 </ul>
 </li>
 </ul>
@@ -365,7 +354,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../SD60/" class="btn btn-neutral float-right" title="SD60(新版)">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../SD60/" class="btn btn-neutral float-right" title="SD60">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
         <a href=".." class="btn btn-neutral" title="首页"><span class="icon icon-circle-arrow-left"></span> Previous</a>

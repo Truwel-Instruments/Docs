@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>SD60(新版) - 北京华益瑞科技有限公司</title>
+  <title>SD60 - 北京华益瑞科技有限公司</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,7 +18,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "SD60(\u65b0\u7248)";
+    var mkdocs_page_name = "SD60";
     var mkdocs_page_input_path = "SD60.md";
     var mkdocs_page_url = null;
   </script>
@@ -54,29 +54,19 @@
                 <ul class="current">
                     <li class="toctree-l1"><a class="reference internal" href="../TR128/">TR128(温度链专用数据采集器)</a>
                     </li>
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">SD60(新版)</a>
+                    <li class="toctree-l1 current"><a class="reference internal current" href="./">SD60</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#_1">使用说明</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#_2">存储</a>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">存储</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#_3">功耗</a>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">功耗</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#_4">供电</a>
+    <li class="toctree-l2"><a class="reference internal" href="#_4">供电</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#_5">测量</a>
+    <li class="toctree-l2"><a class="reference internal" href="#_5">测量</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#usb">USB通讯</a>
+    <li class="toctree-l2"><a class="reference internal" href="#usb">USB通讯</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#4g">4G通讯(选配)</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#_6">常用辅助命令</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#921600ascii">串口波特率921600，响应结尾ASCII字符串，严格区分大小写</a>
-    </li>
-        </ul>
+    <li class="toctree-l2"><a class="reference internal" href="#4g">4G通讯(选配)</a>
     </li>
     </ul>
                     </li>
@@ -170,7 +160,7 @@
         
       
     
-    <li>SD60(新版)</li>
+    <li>SD60</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -186,12 +176,11 @@
     <center>
 </h1>
 
-<h2 id="sd60">SD60新版本</h2>
 <h3 id="_1">使用说明</h3>
 <h6 id="_2">存储</h6>
 <ul>
 <li>16M字节<ul>
-<li>每个浮点数占4字节，每一条数据包括时间、记录号、电源电压、温度、湿度、传感器数值1……传感器数值N，假设接入6个SM926土壤9参数传感器，那么每条数据字节数等于236字节(5<em>4+6</em>9*4)。假设每半小时测量并存储一次，则可存储超过1481天。存满之后，设备自动循环存储，新的数据会覆盖旧的数据</li>
+<li>每个浮点数占4字节，每一条数据包括时间、记录号、电源电压、温度、湿度、传感器数值1……传感器数值N，假设接入6个SM926土壤9参数传感器，那么每条数据字节数等于236字节(5×4+6×9×4)。假设每半小时测量并存储一次，则可存储超过1481天。存满之后，设备自动循环存储，新的数据会覆盖旧的数据</li>
 </ul>
 </li>
 </ul>
