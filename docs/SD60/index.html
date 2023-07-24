@@ -365,8 +365,28 @@
 </tr>
 <tr>
 <td align="center">12</td>
-<td align="center">"-sw power on\r\n"</td>
-<td align="center">打开可控电源</td>
+<td align="center">"-set power mode %d\r\n"</td>
+<td align="center"><strong>设置传感器供电模式</strong></td>
+<td align="center"><strong>模式:0表示断续供电;1表示长供电</strong></td>
+<td align="center">无</td>
+<td align="center">无</td>
+<td align="center">"intermittent power supply for sensors\r\n"</td>
+<td align="center">"continuous power supply for sensors\r\n"</td>
+</tr>
+<tr>
+<td align="center">13</td>
+<td align="center">"-get power mode\r\n"</td>
+<td align="center">获取传感器供电模式</td>
+<td align="center">无</td>
+<td align="center">无</td>
+<td align="center">无</td>
+<td align="center">"intermittent power supply for sensors\r\n"</td>
+<td align="center">"continuous power supply for sensors\r\n"</td>
+</tr>
+<tr>
+<td align="center">14</td>
+<td align="center">"-enable mcu lowpower mode\r\n"</td>
+<td align="center">使能mcu低功耗模式</td>
 <td align="center">无</td>
 <td align="center">无</td>
 <td align="center">无</td>
@@ -374,14 +394,24 @@
 <td align="center">无</td>
 </tr>
 <tr>
-<td align="center">13</td>
-<td align="center">"-sw power off\r\n"</td>
-<td align="center">关闭可控电源</td>
+<td align="center">15</td>
+<td align="center">"-disable mcu lowpower mode\r\n"</td>
+<td align="center">禁止mcu低功耗模式</td>
 <td align="center">无</td>
 <td align="center">无</td>
 <td align="center">无</td>
 <td align="center">"\r\nok\r\n"</td>
 <td align="center">无</td>
+</tr>
+<tr>
+<td align="center">16</td>
+<td align="center">"-get mcu lowpower mode\r\n"</td>
+<td align="center">获取mcu低功耗模式配置</td>
+<td align="center">无</td>
+<td align="center">无</td>
+<td align="center">无</td>
+<td align="center">"mcu lowpower mode disabled\r\n"</td>
+<td align="center">"mcu lowpower mode enabled\r\n"</td>
 </tr>
 </tbody>
 </table>
