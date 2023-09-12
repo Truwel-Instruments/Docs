@@ -54,13 +54,15 @@
                 <ul class="current">
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">SD60</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#_2">存储</a>
+    <li class="toctree-l2"><a class="reference internal" href="#_2">注意事项</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#_3">功耗</a>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">存储</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#_4">供电</a>
+    <li class="toctree-l2"><a class="reference internal" href="#_4">功耗</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#_5">测量</a>
+    <li class="toctree-l2"><a class="reference internal" href="#_5">供电</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_6">测量</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#usb">USB通讯</a>
     </li>
@@ -179,24 +181,29 @@
 </h1>
 
 <h3 id="_1">使用说明</h3>
-<h6 id="_2">存储</h6>
+<h6 id="_2">注意事项</h6>
+<ul>
+<li>自SD60H V3.5.0版本开始，传感器供电默认断续供电，可通过命令"-set power mode 1\r\n"将断续供电改为长期供电</li>
+<li>使用SDF 2.0模块接入W10风速传感器时，SD60H版本不能低于4.0.1H。使用SDF 1.0模块接入W10风速传感器时，SD60H版本不能高于4.0.0H</li>
+</ul>
+<h6 id="_3">存储</h6>
 <ul>
 <li>16M字节<ul>
 <li>每个浮点数占4字节，每一条数据包括时间、记录号、电源电压、温度、湿度、传感器数值1……传感器数值N，假设接入6个SM926土壤9参数传感器，那么每条数据字节数等于236字节(5×4+6×9×4)。假设每半小时测量并存储一次，则可存储超过1481天。存满之后，设备自动循环存储，新的数据会覆盖旧的数据</li>
 </ul>
 </li>
 </ul>
-<h6 id="_3">功耗</h6>
+<h6 id="_4">功耗</h6>
 <ul>
 <li>SD60H版本固件，待机电流小于1mA@12V</li>
 </ul>
-<h6 id="_4">供电</h6>
+<h6 id="_5">供电</h6>
 <ul>
 <li><strong>BATT</strong> 端为电池接口，SD60标配 <strong>10安时</strong> 18650电池包，充满电之后电压可达到 <strong>12.6</strong> 伏，低于 <strong>10</strong> 伏时，容量基本耗尽。电池容量可修改为 <strong>5安时</strong> 或 <strong>15安时</strong> ，<strong>15安时</strong> 电池包体积较大，无法放在SD60壳体内，需要额外配置防水盒。也可以根据需求，额外增加电池包，相应的防水盒也需要增加</li>
 <li><strong>SOLAR</strong> 端为充电接口，建议输入电源电压不大于24V，SD60内部集成充电控制器，12V直流电源或者太阳能板可直接接到 </li>
 <li><strong>Type-C</strong>端既可以作为USB通讯使用，也可以为SD60提供电源。但需要注意的是，此时传感器端口输出只有5V，如SM926、CS655等需要较高电压的传感器将无法工作</li>
 </ul>
-<h6 id="_5">测量</h6>
+<h6 id="_6">测量</h6>
 <ul>
 <li>板载温湿度测量<ul>
 <li>0%RH~80%RH(25℃时)误差仅为±1.5%RH</li>
@@ -208,8 +215,7 @@
 </ul>
 <h6 id="usb">USB通讯</h6>
 <ul>
-<li>采用USB-Type-c接口，连接后，电脑端将生成一个串口，可通过电脑设备管理器查看该串口(Silicon Labs CP210x USB to UART Bridge
-)，如果没有安装过本系列的USB驱动，使用前需要先安装CP210x驱动</li>
+<li>采用USB-Type-c接口，连接后，电脑端将生成一个串口，可通过电脑设备管理器查看该串口(Silicon Labs CP210x USB to UART Bridge)，如果没有安装过本系列的USB驱动，使用前需要先安装CP210x驱动</li>
 <li>PC端软件 <strong>DLogger数据采集中心</strong> ，具有时间同步、参数获取与配置、本地数据下载、远程数据下载等功能</li>
 <li>遇到问题时，用串口调试助手(波特率 <strong>921600</strong>)，发送"-debug on"(勾选回车换行)，可打开调试信息输出，通过串口输出信息判断具体原因</li>
 </ul>
@@ -234,7 +240,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="_6">常用辅助命令</h3>
+<h3 id="_7">常用辅助命令</h3>
 <h6 id="921600ascii">串口波特率921600，响应结尾ASCII字符串，严格区分大小写</h6>
 <ul>
 <li>"\r\n" : 回车换行</li>

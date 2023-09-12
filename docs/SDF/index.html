@@ -89,47 +89,49 @@
                     </li>
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">SDF(开关信号/低频交流信号转SDI12)</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#sdi1200">SDI12地址初始为'0'，命令可以地址'0'或者'?'开头，命令可以全部大写或全部小写</a>
+    <li class="toctree-l2"><a class="reference internal" href="#sdi120">SDI12地址初始为'0'，命令以地址或者'?'开头，以'!'结尾，命令必须全部大写</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#psw">模式一（PSW模式，默认模式）</a>
+    <li class="toctree-l2"><a class="reference internal" href="#20sdfsd60w10sd60401h">当使用2.0版本的SDF模块接入SD60测量W10风速传感器时，对应的SD60版本不能低于4.0.1H</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_1">查询信息</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#psw_1">适用于只接入PSW传感器场景</a>
+    <li class="toctree-l3"><a class="reference internal" href="#_2">查询厂家信息</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#sdi12">模式一下，SDI12命令及相应</a>
+    <li class="toctree-l3"><a class="reference internal" href="#sdf">查询配置，示例中的回复为SDF模块出厂默认配置</a>
     </li>
         </ul>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#pll">模式二（PLL模式）</a>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">通道选择</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#pll_1">适用于只接入PLL传感器场景</a>
+    <li class="toctree-l3"><a class="reference internal" href="#_4">双通道模式</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#sdi12_1">模式二下，SDI12命令及相应</a>
+    <li class="toctree-l3"><a class="reference internal" href="#psw">PSW通道模式</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#pll">PLL通道模式</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#sdi12pswpll">任意通道模式下，通过下列SDI12命令，皆可以直接读取任意PSW和PLL数据</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_5">输出数据类型</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#_6">三种数据类型</a>
     </li>
         </ul>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#pswpll">模式三（PSW、PLL自由选择模式）</a>
+    <li class="toctree-l3"><a class="reference internal" href="#_7">系数设定</a>
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#pswpll_1">适用于同时接入PSW和PLL传感器的场景</a>
+    <li class="toctree-l4"><a class="reference internal" href="#psw_1">设定PSW倍乘</a>
     </li>
-    <li class="toctree-l3"><a class="reference internal" href="#sdi12_2">模式三下，SDI12命令及相应</a>
+    <li class="toctree-l4"><a class="reference internal" href="#psw_2">设定PSW偏移量</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#pll_1">设定PLL倍乘</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#pll_2">设定PLL倍乘</a>
     </li>
         </ul>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#_1">任意模式下</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#_2">系数设定</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#psw_2">设定PSW倍乘示例</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#psw_3">设定PSW偏移量示例</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#pll_2">设定PLL倍乘示例</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#pll_3">设定PLL倍乘示例</a>
+    <li class="toctree-l3"><a class="reference internal" href="#_8">输出数据置零选项</a>
     </li>
         </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#_3">查询配置</a>
     </li>
     </ul>
                     </li>
@@ -204,88 +206,198 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="sdf_stm32g031f8_cubemx_keil">SDF_STM32G031F8_CubeMX_KEIL</h1>
-<h6 id="sdi1200">SDI12地址初始为'0'，命令可以地址'0'或者'?'开头，命令可以全部大写或全部小写</h6>
-<h4 id="psw">模式一（PSW模式，默认模式）</h4>
-<h6 id="psw_1">适用于只接入PSW传感器场景</h6>
-<pre><code>sdi12 recorder command -&gt; &quot;0CONFIG PSW MODE!&quot;
-sdi12 sensor response  -&gt; &quot;0PSW MODE\r\n&quot;
+                <h1 id="sdf_20_stm32g031f8_cubemx_keil">SDF_2.0_STM32G031F8_CubeMX_KEIL</h1>
+<h4 id="sdi120">SDI12地址初始为'0'，命令以地址或者'?'开头，以'!'结尾，命令必须全部大写</h4>
+<h4 id="20sdfsd60w10sd60401h">当使用2.0版本的SDF模块接入SD60测量W10风速传感器时，对应的SD60版本不能低于4.0.1H</h4>
+<h3 id="_1">查询信息</h3>
+<h6 id="_2">查询厂家信息</h6>
+<pre><code>sdi12 recorder command -&gt;?I!
+sdi12 sensor response  -&gt;013TRUWEL SDF V2.0.0(PSW/PLL To SDI12)
+
 </code></pre>
-<h6 id="sdi12">模式一下，SDI12命令及相应</h6>
-<pre><code>sdi12 recorder command -&gt; &quot;0M!&quot;
-sdi12 sensor response  -&gt; &quot;00001\r\n&quot;
-</code></pre>
-<pre><code>sdi12 recorder command -&gt; &quot;0D0!&quot;
-sdi12 sensor response  -&gt; &quot;0+PSW\r\n&quot;
-</code></pre>
-<h4 id="pll">模式二（PLL模式）</h4>
-<h6 id="pll_1">适用于只接入PLL传感器场景</h6>
-<pre><code>sdi12 recorder command -&gt; &quot;0CONFIG PLL MODE!&quot;
-sdi12 sensor response  -&gt; &quot;0PLL MODE\r\n&quot;
-</code></pre>
-<h6 id="sdi12_1">模式二下，SDI12命令及相应</h6>
-<pre><code>sdi12 recorder command -&gt; &quot;0M!&quot;
-sdi12 sensor response  -&gt; &quot;00001\r\n&quot;
-</code></pre>
-<pre><code>sdi12 recorder command -&gt; &quot;0D0!&quot;
-sdi12 sensor response  -&gt; &quot;0+PLL\r\n&quot;
-</code></pre>
-<h4 id="pswpll">模式三（PSW、PLL自由选择模式）</h4>
-<h6 id="pswpll_1">适用于同时接入PSW和PLL传感器的场景</h6>
-<pre><code>sdi12 recorder command -&gt; &quot;0CONFIG DUAL MODE!&quot;
-sdi12 sensor response  -&gt; &quot;0DUAL MODE\r\n&quot;
-</code></pre>
-<h6 id="sdi12_2">模式三下，SDI12命令及相应</h6>
-<pre><code>sdi12 recorder command -&gt; &quot;0M!&quot;
-sdi12 sensor response  -&gt; &quot;00002\r\n&quot;
-</code></pre>
-<pre><code>sdi12 recorder command -&gt; &quot;0D0!&quot;
-sdi12 sensor response  -&gt; &quot;0+PSW+PLL\r\n&quot;
-</code></pre>
-<h4 id="_1">任意模式下</h4>
-<pre><code>sdi12 recorder command -&gt; &quot;0M0!&quot;
-sdi12 sensor response  -&gt; &quot;00002\r\n&quot;
-</code></pre>
-<pre><code>sdi12 recorder command -&gt; &quot;0D0!&quot;
-sdi12 sensor response  -&gt; &quot;0+PSW+PLL\r\n&quot;
-</code></pre>
-<pre><code>sdi12 recorder command -&gt; &quot;0M1!&quot;
-sdi12 sensor response  -&gt; &quot;00001\r\n&quot;
-</code></pre>
-<pre><code>sdi12 recorder command -&gt; &quot;0D0!&quot;
-sdi12 sensor response  -&gt; &quot;0+PSW\r\n&quot;
-</code></pre>
-<pre><code>sdi12 recorder command -&gt; &quot;0M2!&quot;
-sdi12 sensor response  -&gt; &quot;00001\r\n&quot;
-</code></pre>
-<pre><code>sdi12 recorder command -&gt; &quot;0D0!&quot;
-sdi12 sensor response  -&gt; &quot;0+PLL\r\n&quot;
-</code></pre>
-<h4 id="_2">系数设定</h4>
-<h6 id="psw_2">设定PSW倍乘示例</h6>
-<pre><code>sdi12 recorder command -&gt; &quot;0CONFIG PSW GAIN 1.0!&quot;
-sdi12 sensor response  -&gt; &quot;0PSW GAIN 1.0\r\n&quot;
-</code></pre>
-<h6 id="psw_3">设定PSW偏移量示例</h6>
-<pre><code>sdi12 recorder command -&gt; &quot;0CONFIG PSW OFFSET 0.2!&quot;
-sdi12 sensor response  -&gt; &quot;0PSW OFFSET 0.2\r\n&quot;
-</code></pre>
-<h6 id="pll_2">设定PLL倍乘示例</h6>
-<pre><code>sdi12 recorder command -&gt; &quot;0CONFIG PLL GAIN 1.0!&quot;
-sdi12 sensor response  -&gt; &quot;0PLL GAIN 1.0\r\n&quot;
-</code></pre>
-<h6 id="pll_3">设定PLL倍乘示例</h6>
-<pre><code>sdi12 recorder command -&gt; &quot;0CONFIG PLL OFFSET 0.2!&quot;
-sdi12 sensor response  -&gt; &quot;0PLL OFFSET 0.2\r\n&quot;
-</code></pre>
-<h4 id="_3">查询配置</h4>
-<pre><code>sdi12 recorder command -&gt; &quot;0HELP!&quot;
+<h6 id="sdf">查询配置，示例中的回复为SDF模块出厂默认配置</h6>
+<pre><code>sdi12 recorder command -&gt;?HELP!
 sdi12 sensor response  -&gt;
-PSW MODE
-PSW GAIN =1.0
-PSW OFFSET =0.0
-PLL GAIN =1.0
-PLL OFFSET =0.0
+0
+PSW ON
+PLL ON
+PSW:FREQ,0.031981,0.2700,0
+PLL:FREQ,1.000000,0.0000,1
+
+</code></pre>
+<ol>
+<li>第一行"0"<ul>
+<li>SDF模块地址</li>
+</ul>
+</li>
+<li>第二行"PSW ON"<ul>
+<li>PSW通道已打开</li>
+</ul>
+</li>
+<li>第三行"PLL ON"<ul>
+<li>PLL通道已打开</li>
+</ul>
+</li>
+<li>第四行"PSW:FREQ,0.031981,0.2700,0"<ul>
+<li>表示PSW通道输出数据类型为频率，倍乘数值为0.031981，偏移量数值为0.2700。已打开输出数据置零选项，此时输出数据如果小于偏移量0.27，则输出0.000000</li>
+</ul>
+</li>
+<li>第五行"PLL:FREQ,1.000000,0.0000,1"<ul>
+<li>表示PLL通道输出数据类型为频率，倍乘数值为1.000000，偏移量数值为0.0000。已关闭输出数据置零选项</li>
+</ul>
+</li>
+</ol>
+<h3 id="_3">通道选择</h3>
+<h6 id="_4">双通道模式</h6>
+<ul>
+<li>配置命令及响应</li>
+</ul>
+<pre><code>sdi12 recorder command -&gt;?CONFIG DUAL MODE!
+sdi12 sensor response  -&gt;0 DUAL MODE
+
+</code></pre>
+<ul>
+<li>SDI12命令及响应</li>
+</ul>
+<pre><code>sdi12 recorder command -&gt;?M!
+sdi12 sensor response  -&gt;00002
+
+sdi12 recorder command -&gt;?D0!
+sdi12 sensor response  -&gt;0+0.000000+0.000000
+
+</code></pre>
+<h6 id="psw">PSW通道模式</h6>
+<ul>
+<li>配置命令及响应</li>
+</ul>
+<pre><code>sdi12 recorder command -&gt;?CONFIG PSW MODE!
+sdi12 sensor response  -&gt;0 PSW MODE
+
+</code></pre>
+<ul>
+<li>SDI12命令及响应</li>
+</ul>
+<pre><code>sdi12 recorder command -&gt;?M!
+sdi12 sensor response  -&gt;00001
+
+sdi12 recorder command -&gt;?D0!
+sdi12 sensor response  -&gt;0+0.000000
+
+</code></pre>
+<h6 id="pll">PLL通道模式</h6>
+<ul>
+<li>配置命令及响应</li>
+</ul>
+<pre><code>sdi12 recorder command -&gt;?CONFIG PLL MODE!
+sdi12 sensor response  -&gt;0 PLL MODE
+
+</code></pre>
+<ul>
+<li>SDI12命令及响应</li>
+</ul>
+<pre><code>sdi12 recorder command -&gt;?M!
+sdi12 sensor response  -&gt;00001
+
+sdi12 recorder command -&gt;?D0!
+sdi12 sensor response  -&gt;0+0.000000
+
+</code></pre>
+<h6 id="sdi12pswpll">任意通道模式下，通过下列SDI12命令，皆可以直接读取任意PSW和PLL数据</h6>
+<ul>
+<li>M0命令及响应，返回PSW和PLL数据</li>
+</ul>
+<pre><code>sdi12 recorder command -&gt;?M0!
+sdi12 sensor response  -&gt;00002
+
+sdi12 recorder command -&gt;?D0!
+sdi12 sensor response  -&gt;0+0.000000+0.000000
+
+</code></pre>
+<ul>
+<li>M1命令及响应，返回PSW数据</li>
+</ul>
+<pre><code>sdi12 recorder command -&gt;?M1!
+sdi12 sensor response  -&gt;00001
+
+sdi12 recorder command -&gt;?D0!
+sdi12 sensor response  -&gt;0+0.000000
+
+</code></pre>
+<ul>
+<li>M2命令及响应，返回PLL数据</li>
+</ul>
+<pre><code>sdi12 recorder command -&gt;?M2!
+sdi12 sensor response  -&gt;00001
+
+sdi12 recorder command -&gt;?D0!
+sdi12 sensor response  -&gt;0+0.000000
+
+</code></pre>
+<h4 id="_5">输出数据类型</h4>
+<h6 id="_6">三种数据类型</h6>
+<ol>
+<li>计数，字符 <strong>0</strong><ul>
+<li>设定PSW通道输出计数值</li>
+</ul>
+</li>
+</ol>
+<pre><code>sdi12 recorder command -&gt;?CONFIG PSW DATA TYPE 0!
+sdi12 sensor response  -&gt;0 PSW DATA TYPE:COUNT
+
+</code></pre>
+<ol>
+<li>频率，字符 <strong>1</strong><ul>
+<li>设定PSW通道输出频率值</li>
+</ul>
+</li>
+</ol>
+<pre><code>sdi12 recorder command -&gt;?CONFIG PSW DATA TYPE 1!
+sdi12 sensor response  -&gt;0 PSW DATA TYPE:FREQ
+
+</code></pre>
+<ol>
+<li>周期，字符 <strong>2</strong><ul>
+<li>设定PSW通道输出周期值</li>
+</ul>
+</li>
+</ol>
+<pre><code>sdi12 recorder command -&gt;?CONFIG PSW DATA TYPE 2!
+sdi12 sensor response  -&gt;0 PSW DATA TYPE:PERIOD
+
+</code></pre>
+<h4 id="_7">系数设定</h4>
+<h6 id="psw_1">设定PSW倍乘</h6>
+<pre><code>sdi12 recorder command -&gt;?CONFIG PSW GAIN 0.031981!
+sdi12 sensor response  -&gt;0 PSW GAIN 0.031981
+
+</code></pre>
+<h6 id="psw_2">设定PSW偏移量</h6>
+<pre><code>sdi12 recorder command -&gt;?CONFIG PSW OFFSET 0.27!
+sdi12 sensor response  -&gt;0 PSW OFFSET 0.270000
+
+</code></pre>
+<h6 id="pll_1">设定PLL倍乘</h6>
+<pre><code>sdi12 recorder command -&gt;?CONFIG PLL GAIN 1.0!
+sdi12 sensor response  -&gt;0 PLL GAIN 1.0
+
+</code></pre>
+<h6 id="pll_2">设定PLL倍乘</h6>
+<pre><code>sdi12 recorder command -&gt;?CONFIG PLL OFFSET 0.0!
+sdi12 sensor response  -&gt;0 PLL OFFSET 0.000000
+
+</code></pre>
+<h4 id="_8">输出数据置零选项</h4>
+<ul>
+<li>打开选项。此时输出数据如果小于设置的offset数值，则数据将被置零。例如，使用W10风速传感器时，偏移量为0.27，如果输出风速值小于0.27，则输出0.000000</li>
+</ul>
+<pre><code>sdi12 recorder command -&gt;?CONFIG PSW ZERO OPTION 0!
+sdi12 sensor response  -&gt;If the value is less than or equal to the PSW offset, it outputs zero
+</code></pre>
+<ul>
+<li>关闭能选项</li>
+</ul>
+<pre><code>sdi12 recorder command -&gt;?CONFIG PSW ZERO OPTION 1!
+sdi12 sensor response  -&gt;OK
 </code></pre>
               
             </div>
