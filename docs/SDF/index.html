@@ -89,50 +89,6 @@
                     </li>
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">SDF(开关信号/低频交流信号转SDI12)</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#sdi120">SDI12地址初始为'0'，命令以地址或者'?'开头，以'!'结尾，命令必须全部大写</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#20sdfsd60w10sd60401h">当使用2.0版本的SDF模块接入SD60测量W10风速传感器时，对应的SD60版本不能低于4.0.1H</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#_1">查询信息</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#_2">查询厂家信息</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#sdf">查询配置，示例中的回复为SDF模块出厂默认配置</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#_3">通道选择</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#_4">双通道模式</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#psw">PSW通道模式</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#pll">PLL通道模式</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#sdi12pswpll">任意通道模式下，通过下列SDI12命令，皆可以直接读取任意PSW和PLL数据</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#_5">输出数据类型</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#_6">三种数据类型</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#_7">系数设定</a>
-        <ul>
-    <li class="toctree-l4"><a class="reference internal" href="#psw_1">设定PSW倍乘</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#psw_2">设定PSW偏移量</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#pll_1">设定PLL倍乘</a>
-    </li>
-    <li class="toctree-l4"><a class="reference internal" href="#pll_2">设定PLL倍乘</a>
-    </li>
-        </ul>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#_8">输出数据置零选项</a>
-    </li>
-        </ul>
-    </li>
     </ul>
                     </li>
                     <li class="toctree-l1"><a class="reference internal" href="../SDB/">SDB(RS232/RS485转SDI12)</a>
@@ -206,23 +162,20 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="sdf_20_stm32g031f8_cubemx_keil">SDF_2.0_STM32G031F8_CubeMX_KEIL</h1>
-<h4 id="sdi120">SDI12地址初始为'0'，命令以地址或者'?'开头，以'!'结尾，命令必须全部大写</h4>
-<h4 id="20sdfsd60w10sd60401h">当使用2.0版本的SDF模块接入SD60测量W10风速传感器时，对应的SD60版本不能低于4.0.1H</h4>
+                <h4 id="sdi120">SDI12地址初始为'0'，命令以地址或者'?'开头，以'!'结尾，命令必须全部大写</h4>
+<h4 id="201sdfsd60w10sd60404h">当使用2.0.1版本的SDF模块接入SD60测量W10风速传感器时，对应的SD60版本不能低于4.0.4H</h4>
 <h3 id="_1">查询信息</h3>
 <h6 id="_2">查询厂家信息</h6>
 <pre><code>sdi12 recorder command -&gt;?I!
-sdi12 sensor response  -&gt;013TRUWEL SDF V2.0.0(PSW/PLL To SDI12)
+sdi12 sensor response  -&gt;013TRUWEL SDF V2.0.1(PSW/PLL To SDI12)
 
 </code></pre>
 <h6 id="sdf">查询配置，示例中的回复为SDF模块出厂默认配置</h6>
 <pre><code>sdi12 recorder command -&gt;?HELP!
 sdi12 sensor response  -&gt;
-0
-PSW ON
-PLL ON
-PSW:FREQ,0.031981,0.2700,0
-PLL:FREQ,1.000000,0.0000,1
+3
+PSW:ON,FREQ,0.031981,0.2700,0,BRODCAST(W)
+PLL:OFF,COUNT,1.000000,0.0000,1,BRODCAST(W)
 
 </code></pre>
 <ol>
@@ -399,6 +352,84 @@ sdi12 sensor response  -&gt;If the value is less than or equal to the PSW offset
 <pre><code>sdi12 recorder command -&gt;?CONFIG PSW ZERO OPTION 1!
 sdi12 sensor response  -&gt;OK
 </code></pre>
+<h4 id="_9">工作模式配置</h4>
+<ul>
+<li>广播模式<ul>
+<li>使用广播地址：'W'，假设系统接入5个SDF(W10)，常规地址依次为'0','1','2','3','4'<ul>
+<li>广播模式下可使用自定义测量命令"S!"，也可以使用"M!"和"C!"命令</li>
+<li>当收到以广播地址开头的测量命令时，所有SDF模块执行测量，并且不做响应</li>
+<li>当收到"0D0!"时，地址'0'的模块响应测量数据，依次类推</li>
+<li><strong>注意，广播模式下，收到"0M!"或者"0C!"，SDF模块响应命令但是不执行测量</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>普通模式<ul>
+<li>广播地址不起作用，其他操作与普通SDI-12传感器相同</li>
+</ul>
+</li>
+</ul>
+<pre><code>sdi12 recorder command -&gt;?CONFIG MODE 0!
+sdi12 sensor response  -&gt;0 BRODCAST MODE
+
+</code></pre>
+<ul>
+<li>普通模式，广播地址不起作用，其他操作与普通SDI-12传感器相同</li>
+</ul>
+<pre><code>sdi12 recorder command -&gt;?CONFIG MODE 1!
+sdi12 sensor response  -&gt;0 GENERAL MODE
+
+</code></pre>
+<h4 id="_10">广播地址设置</h4>
+<ul>
+<li>通常情况下，不需要修改</li>
+</ul>
+<pre><code>sdi12 recorder command -&gt;?CONFIG B ADDR W!
+sdi12 sensor response  -&gt;0 BRODCAST ADDR W
+
+</code></pre>
+<h4 id="_11">两种使用场景详细说明</h4>
+<ul>
+<li>Campbell数采接入3个SDF(W10)<ol>
+<li>将3个SDF模块分别设置为不同的地址，比如'1','2','3'，将所有SDF模块设置为广播模式</li>
+<li>CRBASIC</li>
+</ol>
+</li>
+</ul>
+<pre><code class="language-vb">Public PTemp, Batt_volt  
+Public sdf_brodcast_addr As String *8
+Public W10_resp_str(3) As String *32 
+Public Elapsed 
+
+DataTable (Test,1,-1) 
+    Minimum (1,Batt_volt,FP2,False,False)
+    Sample (1,PTemp,FP2)
+    Sample (3,W10_resp_str(),IEEE4)
+EndTable
+
+BeginProg
+    SW12 (1 )
+    Scan (10,Sec,0,0)
+        PanelTemp (PTemp,4000)
+        Battery (Batt_volt)
+        Timer (1,mSec,2)
+        SDI12Recorder (sdf_brodcast_addr,C1,&quot;W&quot;,&quot;S!&quot;,1.0,0,0,0) 
+        SDI12Recorder (W10_resp_str(1),C1,&quot;1&quot;,&quot;D0!&quot;,1.0,0,0,0)
+        SDI12Recorder (W10_resp_str(2),C1,&quot;2&quot;,&quot;D0!&quot;,1.0,0,0,0)
+        SDI12Recorder (W10_resp_str(3),C1,&quot;3&quot;,&quot;D0!&quot;,1.0,0,0,0) 
+        Elapsed = Timer (1,mSec,4) 
+        CallTable Test
+    NextScan
+EndProg
+</code></pre>
+<ul>
+<li>SD60接入3个SDF(W10)，<strong>SD60的固件版本不能低于4.0.4H</strong><ol>
+<li>将3个SDF模块分别设置为不同的地址，比如'1','2','3'，将所有SDF模块设置为广播模式 </li>
+<li>按照地址，依次接入SD60对应的端口中，比如地址为'1'的SDF接入SD60的1号端口</li>
+<li>将SD60的1,2,3这3个端口的SDI-12端子，用一根线并联</li>
+</ol>
+</li>
+</ul>
               
             </div>
           </div>
